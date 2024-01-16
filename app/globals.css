@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 html{
-   background-color: rgb(54, 54, 54);
+   background-color: rgb(59, 36, 9);
 }
  body{
     /* background: linear-gradient( rgba(83, 83, 83, 0.79), rgba(39, 39, 39, 0.79)), url('/realtree.jpg') no-repeat center center fixed ; */
