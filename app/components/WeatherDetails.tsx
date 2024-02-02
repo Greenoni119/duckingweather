@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import HourlyComponent from './HourlyComponent';
 interface WeatherDetailsProps {
   data: {
     current?: {
@@ -132,13 +131,7 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = ({ data }) => {
           </div>
         </div>
       </div>
-
-    {/* <div className="">
-      {data.forecast?.forecastday[0]?.hour && (
-        <HourlyComponent hourlyForecast={data.forecast.forecastday[0].hour} />
-      )}
-      </div>  */}
-
+      
     </div>
   );
 };

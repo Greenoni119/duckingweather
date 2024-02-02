@@ -1,21 +1,23 @@
+"use client";
 import React from 'react';
 
-interface HourlyForecast {
-  time: string;
-  temp_f: number;
-  condition: {
-    text: string;
-    icon: string;
-  };
-}
-
 interface HourlyComponentProps {
-  hourlyForecast: HourlyForecast[];
+  hourlyForecast: {
+    time: string;
+    temp_f: number;
+    condition: {
+      text: string;
+      icon: string;
+    };
+  }[];
+  sunrise: string;
+  sunset: string;
 }
 
-const HourlyComponent: React.FC<HourlyComponentProps> = ({ hourlyForecast }) => {
+const HourlyComponent: React.FC<HourlyComponentProps> = ({ hourlyForecast, sunrise, sunset }) => {
   return (
-    <div className="media-scroller snaps-inline hourly-component flex m-5 ">
+    <div className="media-scroller snaps-inline hourly-component flex m-5">
+      
       {hourlyForecast.map((hourData, index) => (
         <div key={index} className="media-element hourly-item text-center m-5">
           <h3 className="text-slate-400">{hourData.time}</h3>

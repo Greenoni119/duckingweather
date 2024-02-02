@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Current from "./components/Current";
 import Input from "./components/Input";
 import WeekForecast from "./components/WeekForecast";
 import WeatherDetails from "./components/WeatherDetails";
 import HourlyComponent from "./components/HourlyComponent";
 
-export default function Home() {
-  const [data, setData] = useState({});
+export default function Home() { 
+  const [data, setData] = useState<any>({});
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
 
@@ -31,13 +31,16 @@ export default function Home() {
       }
     }
   };
-
+  
+  useEffect(() => {
+    console.log("API Response:", data);
+  }, [data]);
+  
   let content;
   if (Object.keys(data).length === 0 && error === "") {
     content = (
       <div className="text-white text-center h-screen mt-[5rem]">
         <h2 className="text-3xl font-semibold mb-4 mx-auto">Made by hunters <br /> for hunters</h2>
-      
       </div>
     );
   } else if (error !== "") {
@@ -52,19 +55,21 @@ export default function Home() {
       <>
         <div className="flex md:flex-row flex-col p-12 items-center justify-center gap-10 lg:gap-20  ">
           <Current data={data} />
-           <WeatherDetails data={data} />
+          <WeatherDetails data={data} />
         </div>
 
-{/* Render HourlyComponent here */}
-<div className="">
-  {data.forecast?.forecastday && data.forecast.forecastday[0]?.hour && (
-    <HourlyComponent hourlyForecast={data.forecast.forecastday[0].hour} />
-  )}
-</div>
-
+        <div className="">
+          {data.forecast?.forecastday[0]?.hour && (
+            <HourlyComponent
+              hourlyForecast={data.forecast.forecastday[0].hour}
+              sunrise={data.forecast.forecastday[0].astro.sunrise}
+              sunset={data.forecast.forecastday[0].astro.sunset}
+            />
+          )}
+        </div>
 
         <div>
-        <WeekForecast data={data} />
+          <WeekForecast data={data} />
         </div>
       </>
     );
