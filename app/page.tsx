@@ -58,13 +58,9 @@ export default function Home() {
           <WeatherDetails data={data} />
         </div>
 
-        <div className="">
+       <div className="">
           {data.forecast?.forecastday[0]?.hour && (
-            <HourlyComponent
-              hourlyForecast={data.forecast.forecastday[0].hour}
-              sunrise={data.forecast.forecastday[0].astro.sunrise}
-              sunset={data.forecast.forecastday[0].astro.sunset}
-            />
+            <HourlyComponent hourlyForecast={data.forecast.forecastday[0].hour}/>
           )}
         </div>
 
