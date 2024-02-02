@@ -4,13 +4,14 @@ import Current from "./components/Current";
 import Input from "./components/Input";
 import WeekForecast from "./components/WeekForecast";
 import WeatherDetails from "./components/WeatherDetails";
+import HourlyComponent from "./components/HourlyComponent";
 
 export default function Home() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
 
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=de8cc3f3b8744c36a3f40856241301&q=${location}&days=7&aqi=yes&alerts=yes`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=ec9b46b79a84491e80e211024240102&q=${location}&days=7&aqi=yes&alerts=yes`;
 
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -35,7 +36,7 @@ export default function Home() {
   if (Object.keys(data).length === 0 && error === "") {
     content = (
       <div className="text-white text-center h-screen mt-[5rem]">
-        <h2 className="text-3xl font-semibold mb-4">Made by hunters <br /> for hunters</h2>
+        <h2 className="text-3xl font-semibold mb-4 mx-auto">Made by hunters <br /> for hunters</h2>
       
       </div>
     );
@@ -49,10 +50,19 @@ export default function Home() {
   } else {
     content = (
       <>
-        <div className="flex md:flex-row flex-col p-12 items-center justify-between mt-[-4rem] gap-10">
+        <div className="flex md:flex-row flex-col p-12 items-center justify-center gap-10 lg:gap-20  ">
           <Current data={data} />
            <WeatherDetails data={data} />
         </div>
+
+{/* Render HourlyComponent here */}
+<div className="">
+  {data.forecast?.forecastday && data.forecast.forecastday[0]?.hour && (
+    <HourlyComponent hourlyForecast={data.forecast.forecastday[0].hour} />
+  )}
+</div>
+
+
         <div>
         <WeekForecast data={data} />
         </div>

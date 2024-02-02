@@ -1,3 +1,6 @@
+"use client";
+import React, { useState } from "react";
+import HourlyComponent from './HourlyComponent';
 interface WeatherDetailsProps {
   data: {
     current?: {
@@ -14,12 +17,21 @@ interface WeatherDetailsProps {
           sunrise: string;
           sunset: string;
         };
+        hour: {
+          time: string;
+          temp_f: number;
+          condition: {
+            text: string;
+            icon: string;
+          };
+        }[];
       }[];
     };
   };
 }
 
-const WeatherDetails = ({ data }: WeatherDetailsProps) => {
+
+const WeatherDetails: React.FC<WeatherDetailsProps> = ({ data }) => {
   if (!data.current) {
     return null;
   }
@@ -120,6 +132,13 @@ const WeatherDetails = ({ data }: WeatherDetailsProps) => {
           </div>
         </div>
       </div>
+
+    {/* <div className="">
+      {data.forecast?.forecastday[0]?.hour && (
+        <HourlyComponent hourlyForecast={data.forecast.forecastday[0].hour} />
+      )}
+      </div>  */}
+
     </div>
   );
 };

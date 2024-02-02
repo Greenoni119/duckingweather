@@ -22,9 +22,11 @@ const Current = ({ data }: CurrentProps) => {
   // const currentDate = getCurrentDate();
   return (
     <>
+    <div className="flex-none">
+
 <div className="">
         {data.location ? (
-          <div className="flex items-center text-black bg-white/90 px-2 py-2 rounded-xl">
+          <div className=" text-center text-black bg-white/90 px-2 py-2 rounded-xl m-5">
             <LocationOnIcon />
             <span>
               {data.location.name}, {data.location.region}
@@ -62,6 +64,7 @@ const Current = ({ data }: CurrentProps) => {
 
       </div>
       
+    </div>
     </div>
     </>
   );
