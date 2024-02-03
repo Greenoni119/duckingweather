@@ -8,8 +8,8 @@ html{
    background-color: rgb(59, 36, 9);
 }
  body{
-    /* background: linear-gradient( rgba(83, 83, 83, 0.79), rgba(39, 39, 39, 0.79)), url('/realtree.jpg') no-repeat center center fixed ; */
-    background: linear-gradient( rgba(4, 38, 14, 0.79), rgba(0, 114, 6, 0.543)), url('/topo.jpg') no-repeat center center fixed ;
+  background: linear-gradient( rgba(65, 70, 66, 0.877), rgba(65, 70, 66, 0.580)), url('/topo.jpg') no-repeat center center fixed ;
+    /* background: linear-gradient( rgba(57, 81, 68, 0.877), rgba(57, 81, 68, 0.580)), url('/topo.jpg') no-repeat center center fixed ; */
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Teko", sans-serif;
@@ -17,7 +17,16 @@ html{
   font-style: normal;
   
  }
-
+.titletext{
+  color:#AA8B55;
+}
+.subtext{
+color:#F0EBCE ;
+}
+.card-bg{
+  background-color: #4e6c507b;
+margin:0 10px;
+}
 .media-scroller {
    --_spacer: var(--size-3);
    display: grid;

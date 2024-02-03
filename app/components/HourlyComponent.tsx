@@ -24,28 +24,29 @@ const settings = {
   initialSlide: 0,
   arrows: false,
   
+  
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         dots: true,
       },
     },
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         initialSlide: 2,
       },
     },
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToShow: 3,
+        slidesToScroll: 3,
       },
     },
   ],
@@ -64,19 +65,21 @@ const HourlyComponent: React.FC<HourlyComponentProps> = ({ hourlyForecast }) => 
   const timePattern = /(\d{2}:\d{2})/;
 
   return (
-    <div className="m-5 pb-20">  
+    <div className="max-screen-w-xl pb-20">  
+    <div className='text-6xl m-5 titletext'>24 hour Forecast</div>
       <div className=''>
         <Slider {...settings}>   
           {hourlyForecast.map((hourData, index) => {
             const timeMatch = hourData.time.match(timePattern);
             const time = timeMatch ? convertTo12HourFormat(timeMatch[1]) : 'Time not found';
-
             return (
-              <div key={index} className="">
-                <h3 className="text-slate-400 text-center mx-auto text-3xl">{time}</h3>
-                <img src={hourData.condition.icon} alt={hourData.condition.text} className='mx-auto' width={100} />
-                <p className="text-slate-10 text-center mx-auto text-3xl">{hourData.temp_f}°f</p>
-              </div>
+    <div key={index} style={{ marginRight: '8px', marginBottom: '8px' }}>
+    <div className="card-bg rounded-xl">
+      <h3 className="titletext text-center mx-auto text-3xl">{time}</h3>
+      <img src={hourData.condition.icon} alt={hourData.condition.text} className='mx-auto' width={100} />
+      <p className="subtext text-center mx-auto text-3xl">{hourData.temp_f}°f</p>
+    </div>
+  </div>
             );
           })}
         </Slider>

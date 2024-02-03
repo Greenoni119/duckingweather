@@ -8,15 +8,15 @@ interface InputProps {
 
 const Input = ({ handleSearch, setLocation }: InputProps) => {
   return (
-    <form className="flex items-center md:w-1/4 w-full order-2 md:order-1">
+    <form className=" flex items-center md:w-1/4 w-full order-2 md:order-1">
       <input
         type="text"
-        className="w-full rounded-sm p-1 outline-none text-white bg-transparent border border-white "
+        className="w-full rounded-sm p-1 outline-none subtext bg-transparent border border-orange-100 "
         placeholder="Enter city, zip..."
         onKeyDown={handleSearch}
         onChange={(e) => setLocation(e.target.value)}
       />
-      <div className="ml-[-25px] text-white cursor-pointer">
+      <div className="ml-[-25px] subtext cursor-pointer">
         <SearchIcon />
       </div>
     </form>

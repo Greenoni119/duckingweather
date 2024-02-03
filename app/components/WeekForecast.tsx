@@ -25,11 +25,12 @@ const WeekForecast = ({ data }: WeekForecastProps) => {
 
   return (
     <>
-    <div className=" p-5  grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 w-full">
+<div className="titletext text-6xl m-5">Weekly Forecast </div>
+    <div className="pb-10  grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4  gap-8 w-full">
       {data.forecast.forecastday.map((day, index) => (
         <div
           key={index}
-          className=" border border-white p-2 text-center text-gray-400 rounded-lg flex flex-col items-center font-semibold gap-4"
+          className="card-bg p-2 text-center titletext rounded-lg flex flex-col items-center font-semibold gap-4"
           role="group"
           aria-label={`Forecast for ${new Date(day.date).toLocaleString("en-US", { weekday: "short" })}`}
         >
@@ -40,19 +41,21 @@ const WeekForecast = ({ data }: WeekForecastProps) => {
             alt={day.day.condition.text}
             aria-label={day.day.condition.text}
           />
-          <div>
-            <p className="bg-black/25 px-2 italic rounded-xl text-white mb-2">
+          <div className="flex  ">
+            <div className="p-3">
+            <p className="bg-black/25 px-2 italic rounded-xl subtext ">
               High:{" "}
               <span aria-label={`Maximum temperature: ${day.day.maxtemp_f.toFixed()} degrees Fahrenheit`}>
                 {day.day.maxtemp_f.toFixed()}°
               </span>
-            </p>
-            <p className="bg-black/25 px-2 italic rounded-xl text-white">
+            </p></div>
+            <div className="p-3">
+            <p className="bg-black/25 px-2 italic rounded-xl subtext">
               Low:{" "}
               <span aria-label={`Minimum temperature: ${day.day.mintemp_f.toFixed()} degrees Fahrenheit`}>
                 {day.day.mintemp_f.toFixed()}°
               </span>
-            </p>
+            </p></div>
           </div>
         </div>
       ))}

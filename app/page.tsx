@@ -39,7 +39,7 @@ export default function Home() {
   let content;
   if (Object.keys(data).length === 0 && error === "") {
     content = (
-      <div className="text-white text-center h-screen mt-[5rem]">
+      <div className="text-white text-center h-screen ">
         <h2 className="text-3xl font-semibold mb-4 mx-auto">Made by hunters <br /> for hunters</h2>
       </div>
     );
@@ -67,16 +67,17 @@ export default function Home() {
         <div>
           <WeekForecast data={data} />
         </div>
+        <footer className="card-bg text-center subtext text-3xl">created by Charles Greene </footer>
       </>
     );
   }
 
   return (
-    <div className=" min-h-screen">
+    <div className="min-h-screen max-w-screen-2xl mx-auto ">
       <div className=" w-full rounded-lg flex flex-col ">
-        <div className="flex flex-col md:flex-row justify-between items-center p-12">
+        <div className="flex flex-col md:flex-row justify-between items-center px-5">
           <Input handleSearch={handleSearch} setLocation={setLocation} />
-          <h1 className="mb-8 md:mb-0 order-1 text-white text-2xl py-2 px-4 rounded-xl italic font-bold">
+          <h1 className="mb-8 pt-2 order-1 text-white text-2xl px-4 rounded-xl italic font-bold">
             DuckingWeather
           </h1>
         </div>
